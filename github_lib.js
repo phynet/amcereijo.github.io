@@ -16,14 +16,14 @@ var github = (function() {
 			contentType: 'application/json'
 		}).done(function(data) {
 			console.log('getRepos: ' + JSON.stringify(data));
-			debugger;
 			var ul = document.createElement('ul');
+			target.append(ul);
 			for(var i=0,l=data.length;i<l;i++) {
 				var li = document.createElement('li');
 				li.innerHTML = data[i].full_name;
 				ul.appendChild(li);
 			}
-			target.append(ul);
+			
 		});
 	};
 
