@@ -1,8 +1,8 @@
 var github = (function() {
 	var getUserName = function() {
 		//http://username.github.io/
-		var host = 'amcereijo.github.io',
-		//var host = window.location.host,
+		//var host = 'amcereijo.github.io',
+		var host = window.location.host,
 			userName = host.replace(/.github.io/, '');
 		return userName;
 	},
