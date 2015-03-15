@@ -1,8 +1,8 @@
-var github = (function() {
+app.github = (function() {
 	var getUserName = function() {
 		//http://username.github.io/
-		//var host = 'amcereijo.github.io',
-		var host = window.location.host,
+		var host = 'amcereijo.github.io',
+		//var host = window.location.host,
 			userName = host.replace(/.github.io/, '');
 		return userName;
 	},
@@ -10,20 +10,12 @@ var github = (function() {
 		return 'https://api.github.com/users/' + getUserName() +
 			'/repos';
 	},
-	getRepos = function(target) {
+	getRepos = function() {
 		$.ajax({
 			url: getReposUrl(),
 			contentType: 'application/json'
 		}).done(function(data) {
-			console.log('getRepos: ' + JSON.stringify(data));
-			var ul = document.createElement('ul');
-			target.append(ul);
-			for(var i=0,l=data.length;i<l;i++) {
-				var li = document.createElement('li');
-				li.innerHTML = data[i].full_name;
-				ul.appendChild(li);
-			}
-			
+			$.publish('github/repo/data', {data:data});
 		});
 	};
 
