@@ -1,9 +1,10 @@
 app.github = (function() {
 	var getUserName = function() {
 		//http://username.github.io/
-		var host = 'amcereijo.github.io',
-		//var host = window.location.host,
-			userName = host.replace(/.github.io/, '');
+		var host = window.location.host || 'localhost',
+			username;
+		host = host.indexOf('localhost')!=-1? 'amcereijo.github.io':host;
+		userName = host.replace(/.github.io/, '');
 		return userName;
 	},
 	getReposUrl =  function() {
