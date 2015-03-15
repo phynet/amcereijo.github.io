@@ -17,11 +17,12 @@ app.navModule =  (function() {
 	}
 
 	function insertLanguange(language, target) {
+		language = language || 'other';
 		if(language && languangeList.indexOf(language) === -1) {
 			languangeList.push(language);
 			var spanLanguage = document.createElement('span');
 			spanLanguage.className = 'btn btn-default';
-			spanLanguage.style.backgroundColor = app.util.randomColor();
+			spanLanguage.style.backgroundColor = app.util.randomColor(language);
 			spanLanguage.innerHTML = language;
 			target.appendChild(spanLanguage);
 		}
