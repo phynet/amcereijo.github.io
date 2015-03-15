@@ -14,6 +14,7 @@ app.main = (function(){
 		for(var i=0,l=data.length;i<l;i++) {
 			var li = document.createElement('li');
 			li.innerHTML = data[i].full_name;
+			li.style.backgroundColor = app.util.randomColor(data[i].language);
 			ul.appendChild(li);
 		}
 	}
