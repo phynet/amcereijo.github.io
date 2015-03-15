@@ -18,18 +18,26 @@
 var app = {};
 app.util = (function(){
 	var colors = [],
-		randomColor = function() {
-			var letters = '0123456789ABCDEF'.split(''),
-				color = '#',
-				i;
-			do {
-		    	for (i = 0; i < 6; i++ ) {
-		        	color += letters[Math.floor(Math.random() * 16)];
-		    	}
-		    } while(colors.indexOf(color) !== -1);
-		    colors.push(color);
-		    return color
-		};
+		languageColors = {};
+
+	function randomColor(language) {
+		var letters = '0123456789ABCDEF'.split(''),
+			color = '#',
+			i;
+		language = language || 'other';
+		if(languageColors[language]) {
+			return languageColors[language];
+		}
+		do {
+	    	for (i = 0; i < 6; i++ ) {
+	        	color += letters[Math.floor(Math.random() * 16)];
+	    	}
+	    } while(colors.indexOf(color) !== -1);
+	    colors.push(color);
+	    languageColors[language] = color;
+
+	    return color
+	}
 	return {
 		randomColor: randomColor
 	}
