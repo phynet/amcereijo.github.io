@@ -1,5 +1,6 @@
 app.main = (function(){
-	var $mainElement = $('main');
+	var $mainElement = $('main'),
+		data;
 
 	function init() {
 		console.log('main init!!');
@@ -7,20 +8,37 @@ app.main = (function(){
 	}
 
 	function processRepos(evt, results) {
-		var data = results.data;
+		data = results.data;
 		console.log('getRepos: ' + JSON.stringify(data));
 		var ul = document.createElement('ul');
 		$mainElement.append(ul);
-		for(var i=0,l=data.length;i<l;i++) {
+		writeElements(data, ul);
+	}
+
+	function writeElements(list, target) {
+		for(var i=0,l=list.length;i<l;i++) {
 			var li = document.createElement('li');
-			li.innerHTML = data[i].full_name;
-			li.style.backgroundColor = app.util.randomColor(data[i].language);
-			ul.appendChild(li);
+			li.innerHTML = list[i].full_name;
+			li.style.backgroundColor = app.util.randomColor(list[i].language);
+			target.appendChild(li);
 		}
 	}
 
+	function filterData(text) {
+		console.log('flter by ' + text);
+		var filterData = text? data.filter(function(value) {
+			return (value.full_name.indexOf(text) !== -1);
+		}) : data;		
+		$mainElement.empty();
+		var ul = document.createElement('ul');
+		$mainElement.append(ul);
+		writeElements(filterData, ul);
+
+	}
+
 	return {
-		init: init
+		init: init,
+		filterData: filterData
 	};
 
 })();

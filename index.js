@@ -46,4 +46,9 @@ app.util = (function(){
 $(document).ready(function() {
 	console.log('ready!!');
 	app.github.getRepos();
+
+	$('.searchRepos').keyup(function(evt) {
+	 	app.main.filterData(evt.target.value);
+	});
+
 });
