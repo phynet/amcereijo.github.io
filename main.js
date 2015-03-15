@@ -27,7 +27,9 @@ app.main = (function(){
 	function filterData(text) {
 		console.log('flter by ' + text);
 		var filterData = text? data.filter(function(value) {
-			return (value.full_name.indexOf(text) !== -1);
+			var fullName = value.full_name.toLowerCase();
+				text = text.toLowerCase();
+			return (fullName.indexOf(text) !== -1);
 		}) : data;		
 		$mainElement.empty();
 		var ul = document.createElement('ul');
