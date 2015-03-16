@@ -21,7 +21,7 @@ app.util = (function(){
 		languageColors = {};
 
 	function randomColor(language) {
-		var letters = '0123456789ABCDEF'.split(''),
+		var letters = 'ABCDE'.split(''),
 			color = '#',
 			i;
 		language = language || 'other';
@@ -29,8 +29,8 @@ app.util = (function(){
 			return languageColors[language];
 		}
 		do {
-	    	for (i = 0; i < 6; i++ ) {
-	        	color += letters[Math.floor(Math.random() * 16)];
+	    	for (i = 0; i < 3; i++) {
+	        	color += letters[Math.floor(Math.random() * letters.length)];
 	    	}
 	    } while(colors.indexOf(color) !== -1);
 	    colors.push(color);
