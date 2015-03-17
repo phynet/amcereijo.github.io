@@ -1,3 +1,5 @@
+
+
 app.navModule =  (function() {
 	var $mainElement = $('nav'),
 		languangeList = [];
@@ -9,11 +11,20 @@ app.navModule =  (function() {
 
 	function processRepos(evt, results) {
 		var target = $mainElement.find('#laguages').get(0),
-			data = results.data;
+			data = results.data,
+			languages = [],
+			language; 
 		for(var i=0,l=data.length;i<l;i++) {
-			var language = data[i].language;
-			insertLanguange(language, target);
+			language = data[i].language || 'other';
+			if(languangeList.indexOf(language) === -1) {
+				languangeList.push(language);
+				languages.push({name: language, color: app.util.randomColor(language)});
+			}
 		}
+
+		var template = Handlebars.compile($('#entry-template').html());
+		var html = template({languages:languages});
+		$(target).html(html);
 	}
 
 	function insertLanguange(language, target) {

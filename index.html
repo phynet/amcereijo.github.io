@@ -8,7 +8,10 @@
 		</header>
 		
 		<nav class="container">
-			<p id="laguages" class="text-left">Languages: </p>
+			<p class="text-left">
+				<span>Languages: </span>
+				<span id="laguages"></span>
+			</p>
 			<p class="text-left"><input type="text" class="form-control searchRepos" placeholder="Search"></p>
 		</nav>
 		
@@ -19,7 +22,16 @@
 			<p class="text-center">it's footer</p>
 		</footer>
 	</body>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.16/require.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
 	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.16/require.min.js"></script>
+
+	<script type="text/javascript" src="js/index.js"></script>
+
+	
+
+	<script id="entry-template" type="text/x-handlebars-template">
+		{{#each languages}}
+			<span class="btn btn-default" style="background-color:{{color}}">{{name}}</span>
+		{{/each}}
+	</script>
 </html>
