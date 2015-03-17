@@ -14,6 +14,9 @@ app.main = (function(){
 		$('.searchRepos').keyup(function(evt) {
 		 	filterData(evt.target.value);
 		});
+		$('.project-name').click(function(evt) {
+			$(evt.target).closest('.panel').find('.more-stuff').toggleClass('hide');
+		});
 	}
 
 	

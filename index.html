@@ -37,10 +37,10 @@
 
 	<script id="project-list-template" type="text/x-handlebars-template">
 		<style>
-		.name {
+		.project-name {
 		    position: relative;
 		}
-		.name span:last-child {
+		.project-name span:last-child {
 		    position: absolute;
 		    right: 3%;
 		    top:14; 
@@ -48,7 +48,7 @@
 		</style>
 		{{#each projects}}
 		<div class="panel panel-default">
-		  <div class="panel-heading name" style="background-color:{{color}}">
+		  <div class="panel-heading project-name" style="background-color:{{color}}">
 		    <h3 class="panel-title" >{{name}}</h3>
 		    <span style="font-weight: bold; ">
 		    {{#if language}}
@@ -61,8 +61,8 @@
 		  <div class="panel-body">
 		    <blockquote>{{description}}</blockquote>
 		  </div>
-		  <div class="hide">
-		  ... more stuff...
+		  <div class="more-stuff hide">
+		  	<iframe style="width:100%" src="https://github.com/amcereijo/{{name}}"></iframe>
 		  </div>
 		</div>
 		
