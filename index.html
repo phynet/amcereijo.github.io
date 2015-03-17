@@ -50,7 +50,13 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading name" style="background-color:{{color}}">
 		    <h3 class="panel-title" >{{name}}</h3>
-		    <span style="font-weight: bold; ">{{language}}</span>
+		    <span style="font-weight: bold; ">
+		    {{#if language}}
+		    	{{language}}
+		    {{else}}
+		    	Other
+		    {{/if}}
+		    </span>
 		  </div>
 		  <div class="panel-body">
 		    <blockquote>{{description}}</blockquote>
