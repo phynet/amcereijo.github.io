@@ -24,18 +24,6 @@ app.navModule =  (function() {
 		app.util.render('#nav-languanges-template', {languages:languages}, target);
 	}
 
-	function insertLanguange(language, target) {
-		language = language || 'other';
-		if(language && languangeList.indexOf(language) === -1) {
-			languangeList.push(language);
-			var spanLanguage = document.createElement('span');
-			spanLanguage.className = 'btn btn-default';
-			spanLanguage.style.backgroundColor = app.util.randomColor(language);
-			spanLanguage.innerHTML = language;
-			target.appendChild(spanLanguage);
-		}
-	}
-
 	return {
 		init: init
 	}
