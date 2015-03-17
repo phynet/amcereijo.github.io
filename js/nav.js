@@ -21,10 +21,7 @@ app.navModule =  (function() {
 				languages.push({name: language, color: app.util.randomColor(language)});
 			}
 		}
-
-		var template = Handlebars.compile($('#entry-template').html());
-		var html = template({languages:languages});
-		$(target).html(html);
+		app.util.render('#nav-languanges-template', {languages:languages}, target);
 	}
 
 	function insertLanguange(language, target) {

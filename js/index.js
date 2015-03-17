@@ -33,10 +33,20 @@ app.util = (function(){
 	    colors.push(color);
 	    languageColors[language] = color;
 
-	    return color
+	    return color;
 	}
+
+	function render(templateSelector, data, targetElement) {
+		var el = document.querySelector(templateSelector),
+			contentEl = el.innerHTML,
+			template = Handlebars.compile(contentEl),
+			html = template(data);
+		$(targetElement).html(html);
+	}
+
 	return {
-		randomColor: randomColor
+		randomColor: randomColor,
+		render: render
 	}
 })();
 
