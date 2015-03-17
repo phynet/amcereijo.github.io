@@ -34,4 +34,33 @@
 			<span class="btn btn-default" style="background-color:{{color}}">{{name}}</span>
 		{{/each}}
 	</script>
+
+	<script id="project-list-template" type="text/x-handlebars-template">
+		<style>
+		.name {
+		    position: relative;
+		}
+		.name span:last-child {
+		    position: absolute;
+		    right: 3%;
+		    top:14; 
+		}
+		</style>
+		{{#each projects}}
+		<div class="panel panel-default">
+		  <div class="panel-heading name" style="background-color:{{color}}">
+		    <h3 class="panel-title" >{{name}}</h3>
+		    <span style="font-weight: bold; ">{{language}}</span>
+		  </div>
+		  <div class="panel-body">
+		    <blockquote>{{description}}</blockquote>
+		  </div>
+		  <div class="hide">
+		  ... more stuff...
+		  </div>
+		</div>
+		
+		{{/each}}
+	</script>
+
 </html>

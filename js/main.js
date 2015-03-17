@@ -10,18 +10,21 @@ app.main = (function(){
 	function processRepos(evt, results) {
 		data = results.data;
 		console.log('getRepos: ' + JSON.stringify(data));
-		var ul = document.createElement('ul');
-		$mainElement.append(ul);
-		writeElements(data, ul);
+		writeElements(data);
 	}
 
-	function writeElements(list, target) {
+	
+	function writeElements(list) {
+		list = completeWithColors(list);
+		app.util.render('#project-list-template', 
+			{projects: list}, $mainElement);
+	}
+
+	function completeWithColors(list) {
 		for(var i=0,l=list.length;i<l;i++) {
-			var li = document.createElement('li');
-			li.innerHTML = list[i].full_name;
-			li.style.backgroundColor = app.util.randomColor(list[i].language);
-			target.appendChild(li);
+			list[i].color = app.util.randomColor(list[i].language);
 		}
+		return list;
 	}
 
 	function filterData(text) {
@@ -32,10 +35,7 @@ app.main = (function(){
 			return (fullName.indexOf(text) !== -1);
 		}) : data;		
 		$mainElement.empty();
-		var ul = document.createElement('ul');
-		$mainElement.append(ul);
-		writeElements(filterData, ul);
-
+		writeElements(filterData);
 	}
 
 	return {
