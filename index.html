@@ -45,6 +45,9 @@
 		    right: 3%;
 		    top:14; 
 		}
+		.more-stuff: {
+			margin-left: 3%;
+		}
 		</style>
 		{{#each projects}}
 		<div class="panel panel-default">
@@ -61,8 +64,13 @@
 		  <div class="panel-body">
 		    <blockquote>{{description}}</blockquote>
 		  </div>
-		  <div class="more-stuff hide">
-		  	<iframe style="width:100%" src="https://github.com/amcereijo/{{name}}"></iframe>
+		  <div class="more-stuff">
+			<dl>
+			 	<dt>Last update</dt>
+				<dd>{{updated_at}}</dd>
+				<dt>Repo Url</dt>
+				<dd>{{html_url}}</dd>
+			</dl>
 		  </div>
 		</div>
 		
