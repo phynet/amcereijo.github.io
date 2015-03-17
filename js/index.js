@@ -70,9 +70,6 @@ app.util = (function(){
 			require(['github_lib','main','nav'], function() {
 				console.log('ready!!');
 				app.github.getRepos();
-				$('.searchRepos').keyup(function(evt) {
-				 	app.main.filterData(evt.target.value);
-				});
 			});
 		};
 	require(['jquery', 'handlebars'], getDependecies);

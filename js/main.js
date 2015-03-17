@@ -11,6 +11,9 @@ app.main = (function(){
 		data = results.data;
 		console.log('getRepos: ' + JSON.stringify(data));
 		writeElements(data);
+		$('.searchRepos').keyup(function(evt) {
+		 	filterData(evt.target.value);
+		});
 	}
 
 	
