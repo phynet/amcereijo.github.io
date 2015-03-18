@@ -14,12 +14,11 @@ app.main = (function(){
 		$('.searchRepos').keyup(function(evt) {
 		 	filterData(evt.target.value);
 		});
-		$('.project-name').click(function(evt) {
+		$(document).click('.project-name', function(evt) {
 			$(evt.target).closest('.panel').find('.more-stuff').toggleClass('hide');
 		});
 	}
 
-	
 	function writeElements(list) {
 		list = completeWithColors(list);
 		app.util.render('#project-list-template', 
