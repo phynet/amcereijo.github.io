@@ -11,16 +11,29 @@ app.github = (function() {
 		return 'https://api.github.com/users/' + getUserName() +
 			'/repos';
 	},
-	getRepos = function() {
+	getReadMeUrl =  function(repoName) {
+		return 'https://api.github.com/repos/' + getUserName() + 
+			'/' + repoName + '/contents/README.md?ref=master';
+	},
+	doCall = function(url, callback) {
 		$.ajax({
-			url: getReposUrl(),
+			url: url,
 			contentType: 'application/json'
-		}).done(function(data) {
+		}).done(callback);
+	},
+	getRepos = function() {
+		doCall(getReposUrl(), function(data) {
 			$.publish('github/repo/data', {data:data});
+		});
+	},
+	getReadme = function(repoName) {
+		doCall(getReadMeUrl(repoName), function(data) {
+			$.publish('github/readme/data', {data:data});
 		});
 	};
 
 	return {
-		getRepos: getRepos
+		getRepos: getRepos,
+		getReadme: getReadme
 	};
 })();

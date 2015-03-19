@@ -3,7 +3,8 @@ require.config({
     baseUrl: 'js',
     paths: {
         'jquery': 'http://code.jquery.com/jquery-1.11.2.min',
-        'handlebars': 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min'
+        'handlebars': 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min',
+        'markdown' :'markdown.min'
     },
     shim: {
     	'handlebars': {
@@ -67,7 +68,7 @@ app.util = (function(){
 		getDependecies = function($, handlebars) {
 			createPubSub($);
 			window.Handlebars = handlebars;
-			require(['github_lib','main','nav'], function() {
+			require(['markdown', 'github_lib','main','nav'], function() {
 				console.log('ready!!');
 				app.github.getRepos();
 			});

@@ -19,7 +19,7 @@
 		</main>
 
 		<footer>
-			<p class="text-center">it's footer</p>
+			<p class="text-center">github.io</p>
 		</footer>
 	</body>
 	
@@ -45,33 +45,45 @@
 		    right: 3%;
 		    top:14; 
 		}
-		.more-stuff: {
-			margin-left: 3%;
+		.more-stuff {
+			padding:15;
+		}
+		.more-stuff h3 {
+			background-color: '#D8D8D8';
+			font-weight: bold;
 		}
 		</style>
 		{{#each projects}}
-		<div class="panel panel-default">
-		  <div class="panel-heading project-name" style="background-color:{{color}}">
-		    <h3 class="panel-title" >{{name}}</h3>
-		    <span style="font-weight: bold; ">
-		    {{#if language}}
-		    	{{language}}
-		    {{else}}
-		    	Other
-		    {{/if}}
-		    </span>
-		  </div>
-		  <div class="panel-body">
-		    <blockquote>{{description}}</blockquote>
-		  </div>
-		  <div class="more-stuff hide">
-			<dl>
-			 	<dt>Last update</dt>
-				<dd>{{updated_at}}</dd>
-				<dt>Repo Url</dt>
-				<dd>{{html_url}}</dd>
-			</dl>
-		  </div>
+		<div class="panel panel-default" data-projectid="{{@index}}">
+			<div class="panel-heading project-name" style="background-color:{{color}}">
+				<h3 class="panel-title" >{{name}}</h3>
+				<span style="font-weight: bold; ">
+				{{#if language}}
+					{{language}}
+				{{else}}
+					Other
+				{{/if}}
+				</span>
+			</div>
+			<div class="panel-body">
+				<blockquote>{{description}}</blockquote>
+				<dl>
+				 	<dt>Repo Url</dt>
+					<dd><a href="{{html_url}}">{{html_url}}</a></dd>
+					<dt>Last update</dt>
+					<dd>{{updated_at}}</dd>
+				</dl>
+			</div>
+			<div class="more-stuff hide">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title" >README.m</h3>
+					</div>
+					<div class="panel-body">
+						
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		{{/each}}
