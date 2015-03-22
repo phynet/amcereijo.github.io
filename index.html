@@ -9,9 +9,14 @@
 		    width: 200;
 		    height: 200;
 		}
-		.profileName {
+		.profileData {
 			position: absolute;
 			left: 230;
+			top:80;
+		}
+		.profileName {
+			position: absolute;
+			left: 320;
 			top:15;
 		}
 		
@@ -47,7 +52,8 @@
 	<script id="header-template" type="text/x-handlebars-template">
 
 		<img class="profileImg img-thumbnail" src="{{avatar_url}}"/>
-		<dl class="dl-horizontal profileName">
+		<h2 class="profileName">{{name}}</h2>
+		<dl class="dl-horizontal profileData">
 			<dt>Username:</dt>
 			<dd>
 				<a href="{{html_url}}">{{login}}</a>
