@@ -27,10 +27,13 @@ app.main = (function(){
 		if(!$moreStuffElement.hasClass('active')) {
 			$('.more-stuff').removeClass('active').addClass('hide');
 			$moreStuffElement.toggleClass('hide').addClass('active');
+			$('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
 			app.github.getReadme(activeElement.name);
 		} else {
 			$moreStuffElement.addClass('hide').removeClass('active');
 		}
+		$panel.find('.glyphicon').toggleClass('glyphicon-chevron-up').toggleClass('glyphicon-chevron-down');
+		
 	}
 
 	function processReadme(evt, result) {

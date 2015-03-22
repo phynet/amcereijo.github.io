@@ -84,6 +84,11 @@
 		    right: 3%;
 		    top:14; 
 		}
+		.project-name span.glyphicon {
+		    position: absolute;
+		    right: 50%;
+		    top:14; 
+		}
 		.more-stuff {
 			padding:15;
 		}
@@ -96,6 +101,9 @@
 		<div class="panel panel-default" data-projectid="{{@index}}">
 			<div class="panel-heading project-name" style="background-color:{{color}}">
 				<h3 class="panel-title" >{{name}}</h3>
+				
+				<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+				
 				<span style="font-weight: bold; ">
 				{{#if language}}
 					{{language}}
