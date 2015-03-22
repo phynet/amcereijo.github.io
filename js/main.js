@@ -6,17 +6,17 @@ app.main = (function(){
 		console.log('main init!!');
 		$.subscribe('github/repo/data', processRepos);
 		$.subscribe('github/readme/data', processReadme);
+		$.subscribe('github/readme/data/filter', filterLanguage);
 	}
 
 	function processRepos(evt, results) {
-
 		data = results.data;
 		console.log('getRepos: ' + JSON.stringify(data));
 		writeElements(data);
 		$('.searchRepos').keyup(function(evt) {
 		 	filterData(evt.target.value);
 		});
-		$(document).click('.project-name', clickProject);
+		$(document).on('click', '.project-name', clickProject);
 	}
 
 	function clickProject(evt) {
@@ -54,19 +54,31 @@ app.main = (function(){
 	}
 
 	function filterData(text) {
-		console.log('flter by ' + text);
-		var filterData = text? data.filter(function(value) {
+		console.log('flter by name: ' + text);
+		filter(text, function(value) {
 			var fullName = value.full_name.toLowerCase();
 				text = text.toLowerCase();
 			return (fullName.indexOf(text) !== -1);
-		}) : data;		
+		});
+	}
+
+	function filterLanguage(evt, language) {
+		console.log('flter by language: ' + language);
+		filter(language, function(value) {
+			var elementLanguage = (value.language?value.language:'Other').toLowerCase();
+				language = language.toLowerCase();
+			return (elementLanguage === language);
+		});
+	}
+
+	function filter(value, filterFuncion) {
+		var filterData = value? data.filter(filterFuncion) : data;		
 		$mainElement.empty();
 		writeElements(filterData);
 	}
 
 	return {
-		init: init,
-		filterData: filterData
+		init: init
 	};
 
 })();

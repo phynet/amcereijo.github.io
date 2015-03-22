@@ -2,7 +2,8 @@
 
 app.navModule =  (function() {
 	var $mainElement = $('nav'),
-		languangeList = [];
+		languangeList = [],
+		anguageButtons;
 
 	function init() {
 		console.log('nav init!!');
@@ -22,10 +23,21 @@ app.navModule =  (function() {
 			}
 		}
 		app.util.render('#nav-languanges-template', {languages:languages}, target);
+		languageButtons = $('.languageBtn');
+		languageButtons.click(clickLanguageButton);
+	}
+
+	function clickLanguageButton(evt) {
+		var $target = $(evt.target);
+		languageButtons.removeClass('disabled');
+		$target.addClass('disabled');
+		$.publish('github/readme/data/filter', $target.data('language'));
+		//app.main.filterLanguage($target.data('language'));
 	}
 
 	return {
 		init: init
 	}
+
 })();
 app.navModule.init();

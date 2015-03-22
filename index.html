@@ -19,7 +19,7 @@
 		</main>
 
 		<footer>
-			<p class="text-center">github.io</p>
+			<p class="text-center"><a href="https://pages.github.com/">https://pages.github.com/</a></p>
 		</footer>
 	</body>
 	
@@ -30,8 +30,9 @@
 	
 
 	<script id="nav-languanges-template" type="text/x-handlebars-template">
+		<span class="languageBtn btn btn-default disabled">All</span>
 		{{#each languages}}
-			<span class="btn btn-default" style="background-color:{{color}}">{{name}}</span>
+			<span class="languageBtn btn btn-default" style="background-color:{{color}}" data-language="{{name}}">{{name}}</span>
 		{{/each}}
 	</script>
 
