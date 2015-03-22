@@ -68,9 +68,10 @@ app.util = (function(){
 		getDependecies = function($, handlebars) {
 			createPubSub($);
 			window.Handlebars = handlebars;
-			require(['markdown', 'github_lib','main','nav'], function() {
+			require(['markdown', 'github_lib','main','nav', 'head'], function() {
 				console.log('ready!!');
 				app.github.getRepos();
+				app.github.getUser();
 			});
 		};
 	require(['jquery', 'handlebars'], getDependecies);
