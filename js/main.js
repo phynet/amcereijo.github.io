@@ -28,6 +28,8 @@ app.main = (function(){
 			$('.more-stuff').removeClass('active').addClass('hide');
 			$moreStuffElement.toggleClass('hide').addClass('active');
 			app.github.getReadme(activeElement.name);
+		} else {
+			$moreStuffElement.addClass('hide').removeClass('active');
 		}
 	}
 
