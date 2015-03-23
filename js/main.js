@@ -12,12 +12,19 @@ app.main = (function(){
 
 	function processRepos(evt, results) {
 		data = results.data;
-		console.log('getRepos: ' + JSON.stringify(data));
+		data = transformData(data);
 		writeElements(data);
 		$('.searchRepos').keyup(function(evt) {
 		 	filterData(evt.target.value);
 		});
 		$(document).on('click', '.project-name', clickProject);
+	}
+	function transformData(data) {
+		return data.map(function(repo) {
+			var d = new Date(repo.updated_at);
+			repo.updated_at = d.toLocaleDateString() + ' at ' + d.toLocaleTimeString();
+			return repo;
+		});
 	}
 
 	function clickProject(evt) {
