@@ -29,34 +29,35 @@ app.main = (function(){
 
 	function clickProject(evt) {
 		var $panel = $(evt.target).closest('.panel'),
-			index = $panel.data('projectid'),
-			activeElement = data[index],
-			$moreStuffElement = $panel.find('.more-stuff');
+		projectName = $panel.data('projectname'),
+		$moreStuffElement = $panel.find('.more-stuff');
+
 		if(!$moreStuffElement.hasClass('active')) {
+			//reset all show more area to hiden
 			$('.more-stuff').removeClass('active').addClass('hide');
+			//show clicked show more area
 			$moreStuffElement.toggleClass('hide').addClass('active');
+			//change icon of show less for show more
 			$('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-			app.github.getReadme(activeElement.name);
+			app.github.getReadme(projectName);
 		} else {
+			//hide clicked show more area
 			$moreStuffElement.addClass('hide').removeClass('active');
 		}
+		//change icon show more for show less in clicked area
 		$panel.find('.glyphicon').toggleClass('glyphicon-chevron-up').toggleClass('glyphicon-chevron-down');
-		
 	}
 
 	function processReadme(evt, result) {
 		result = result.data;
-		var markdownText = atob(result.content);
-		var activeElement = $('.more-stuff.active').find('.panel-body');
-		console.log(result.name + ' ,content:'+result.content);
-		console.log( markdown.toHTML( markdownText ) );
+		var markdownText = atob(result.content),
+			activeElement = $('.more-stuff.active').find('.panel-body');
 		activeElement.html(markdown.toHTML( markdownText ));
 	}
 
 	function writeElements(list) {
 		list = completeWithColors(list);
-		app.util.render('#project-list-template', 
-			{projects: list}, $mainElement);
+		app.util.render('#project-list-template', {projects: list}, $mainElement);
 	}
 
 	function completeWithColors(list) {
